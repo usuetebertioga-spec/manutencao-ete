@@ -39,47 +39,22 @@ def check_password():
 if not check_password():
     st.stop()
 
-# --- ESTILIZAÇÃO CSS GLOBAL (ALTA VISIBILIDADE & FOCO EM ACESSIBILIDADE PARA TABLET) ---
+# --- ESTILIZAÇÃO CSS ADAPTATIVA (SUPORTE TOTAL A MODO CLARO E ESCURO) ---
 st.markdown(
     """
     <style>
-        /* Fundo geral da aplicação limpo */
-        .main { background-color: #f1f5f9; }
-        
-        /* Sidebar (Painel de Controle) com fontes bem grandes e visíveis */
+        /* Sidebar com adaptação automática ao tema */
         section[data-testid="stSidebar"] {
-            background-color: #ffffff;
-            border-right: 2px solid #94a3b8;
-        }
-        section[data-testid="stSidebar"] label, 
-        section[data-testid="stSidebar"] p, 
-        section[data-testid="stSidebar"] span {
-            font-size: 18px !important;
-            color: #0f172a !important;
-            font-weight: 700 !important;
+            border-right: 2px solid rgba(148, 163, 184, 0.3);
         }
         
-        /* Inputs, Selectboxes e Textareas: Fundo branco, borda grossa preta e fonte grande */
-        .stSelectbox div[data-baseweb="select"] > div, 
-        .stMultiSelect div[data-baseweb="select"] > div,
-        input[type="text"], textarea {
-            border-radius: 8px !important;
-            border: 3px solid #334155 !important;
-            background-color: #ffffff !important;
-            font-size: 18px !important;
-            color: #0f172a !important;
-            font-weight: bold !important;
-            min-height: 52px !important;
-        }
-        
-        /* Rótulos (Labels) de todos os campos bem grandes, escuros e destacados */
-        label.st-bp, .stTextInput label, .stSelectbox label, .stMultiSelect label, .stDateInput label, .stRadio label {
+        /* Rótulos e textos gerais adaptáveis */
+        label, .stTextInput label, .stSelectbox label, .stMultiSelect label, .stDateInput label, .stRadio label {
             font-size: 19px !important;
             font-weight: 800 !important;
-            color: #0f172a !important;
         }
         
-        /* Botões grandes, com cor de destaque forte e excelente área de toque */
+        /* Botões grandes e destacados com excelente área de toque */
         .stButton>button {
             background-color: #003366 !important;
             color: #ffffff !important;
@@ -97,10 +72,10 @@ st.markdown(
             color: #ffffff !important;
         }
         
-        /* Cabeçalhos de Seção com Fundo Azul Forte e Letras Brancas Grandes */
+        /* Cabeçalhos de Seção com Fundo Azul Forte e Letras Brancas */
         .intervencao-header {
             background-color: #003366;
-            color: #ffffff;
+            color: #ffffff !important;
             padding: 18px 22px;
             border-radius: 10px;
             font-size: 24px;
@@ -114,7 +89,7 @@ st.markdown(
         
         .section-sub-title {
             background-color: #1e293b;
-            color: #ffffff;
+            color: #ffffff !important;
             padding: 14px 18px;
             border-radius: 8px;
             font-size: 20px;
@@ -124,17 +99,15 @@ st.markdown(
             box-shadow: 0 3px 6px rgba(0,0,0,0.15);
         }
         
-        /* Cards de Atividades com excelente contraste e texto grande */
+        /* Cards de Atividades com contraste otimizado para qualquer tema */
         .card-atividade {
-            background-color: #ffffff;
-            border: 2px solid #cbd5e1;
+            border: 2px solid rgba(148, 163, 184, 0.4);
             border-left: 8px solid #003366;
             padding: 16px 20px;
             border-radius: 8px;
             margin-bottom: 12px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
             font-size: 18px;
-            color: #0f172a;
             font-weight: 700;
         }
         
@@ -142,7 +115,6 @@ st.markdown(
         .stCheckbox span, .stRadio div[role="radiogroup"] label p {
             font-size: 18px !important;
             font-weight: 700 !important;
-            color: #0f172a !important;
         }
     </style>
 """,
@@ -464,13 +436,13 @@ st.sidebar.markdown("---")
 with st.sidebar.expander("📅 Calendário Operacional", expanded=True):
   st.markdown(f"<span style='font-size: 18px; font-weight: bold;'>{mes_nome} de {ano}</span>", unsafe_allow_html=True)
   cal = calendar.monthcalendar(ano, mes_num)
-  dias_semana = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"]
+  dias_semana = ["Seg", "Ter", "Qua", "Qui", "Sexta", "Sáb", "Dom"]
 
   cal_html = "<table style='width:100%; text-align:center; font-size:16px; border-collapse: collapse;'>"
   cal_html += (
       "<tr>"
       + "".join(
-          [f"<th style='padding:8px; color:#0f172a; font-weight:bold;'>{d}</th>" for d in dias_semana]
+          [f"<th style='padding:8px; font-weight:bold;'>{d}</th>" for d in dias_semana]
       )
       + "</tr>"
   )
@@ -487,7 +459,7 @@ with st.sidebar.expander("📅 Calendário Operacional", expanded=True):
             f" font-weight:bold; border-radius:50%;'>{dia:02d}</td>"
         )
       else:
-        cal_html += f"<td style='padding:8px; color:#1e293b; font-weight:bold;'>{dia:02d}</td>"
+        cal_html += f"<td style='padding:8px; font-weight:bold;'>{dia:02d}</td>"
     cal_html += "</tr>"
   cal_html += "</table>"
   st.markdown(cal_html, unsafe_allow_html=True)
@@ -495,7 +467,7 @@ with st.sidebar.expander("📅 Calendário Operacional", expanded=True):
 st.sidebar.markdown("---")
 with st.sidebar.expander("📋 Gestão do Rascunho", expanded=True):
   st.markdown(
-      f"<span style='font-size: 18px; color: #0f172a; font-weight: bold;'>**Itens no Rascunho:** {len(st.session_state['registros_manutencao'])}</span>",
+      f"<span style='font-size: 18px; font-weight: bold;'>**Itens no Rascunho:** {len(st.session_state['registros_manutencao'])}</span>",
       unsafe_allow_html=True,
   )
 
@@ -723,7 +695,7 @@ if st.button("➕ REGISTAR / SALVAR RASCUNHO DA MANUTENÇÃO"):
 # --- HISTÓRICO E GESTÃO DOS REGISTOS & GERAÇÃO DE PDF ---
 if len(st.session_state["registros_manutencao"]) > 0:
   st.markdown("---")
-  st.markdown("<div style='font-size: 22px; font-weight: bold; color: #003366;'>📋 Histórico de Manutenções Registradas</div>", unsafe_allow_html=True)
+  st.markdown("<div style='font-size: 22px; font-weight: bold;'>📋 Histórico de Manutenções Registradas</div>", unsafe_allow_html=True)
   df_manut = pd.DataFrame(st.session_state["registros_manutencao"])
   st.dataframe(df_manut, use_container_width=True)
 
