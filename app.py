@@ -471,7 +471,7 @@ with st.sidebar.expander("📋 Gestão do Rascunho", expanded=True):
       unsafe_allow_html=True,
   )
 
-# --- CABEÇALHO COM LOGO E TÍTULO EM BLOCO AZUL COM TEXTO BRANCO FORÇADO ---
+# --- CABEÇALHO COM LOGO E TÍTULO EM BLOCO AZUL ---
 col_logo1, col_logo2 = st.columns([1, 5])
 with col_logo1:
   if os.path.exists("logo.jpg"):
@@ -480,9 +480,10 @@ with col_logo1:
     st.markdown("🛠️")
 with col_logo2:
   st.markdown(
-      "<div style='background-color: #003366; padding: 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 2px solid #001f3f;'>"
-      "<h2 style='color: #FFFFFF !important; margin: 0; font-size: 24px; font-weight: 900;'>ETE Sesc Bertioga — Módulo de Manutenção</h2>"
-      "</div>",
+      "<div style='background-color: #003366; padding: 18px; border-radius:"
+      " 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 2px solid"
+      " #001f3f;'><span style='color: #ffffff; font-size: 24px; font-weight:"
+      " 900;'>ETE Sesc Bertioga — Módulo de Manutenção</span></div>",
       unsafe_allow_html=True,
   )
 
