@@ -404,7 +404,7 @@ EQUIPAMENTOS_MANUTENCAO = [
 
 # --- PAINEL LATERAL (PAINEL DE CONTROLE) ---
 st.sidebar.markdown(
-    "<h2 style='text-align: center; color: #003366; font-size: 24px; font-weight:"
+    "<h2 style='text-align: center; font-size: 24px; font-weight:"
     " 900;'>Painel de Controle</h2>",
     unsafe_allow_html=True,
 )
@@ -436,7 +436,7 @@ st.sidebar.markdown("---")
 with st.sidebar.expander("📅 Calendário Operacional", expanded=True):
   st.markdown(f"<span style='font-size: 18px; font-weight: bold;'>{mes_nome} de {ano}</span>", unsafe_allow_html=True)
   cal = calendar.monthcalendar(ano, mes_num)
-  dias_semana = ["Seg", "Ter", "Qua", "Qui", "Sexta", "Sáb", "Dom"]
+  dias_semana = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"]
 
   cal_html = "<table style='width:100%; text-align:center; font-size:16px; border-collapse: collapse;'>"
   cal_html += (
@@ -471,7 +471,7 @@ with st.sidebar.expander("📋 Gestão do Rascunho", expanded=True):
       unsafe_allow_html=True,
   )
 
-# --- CABEÇALHO COM LOGO ---
+# --- CABEÇALHO COM LOGO E TÍTULO EM BLOCO AZUL ---
 col_logo1, col_logo2 = st.columns([1, 5])
 with col_logo1:
   if os.path.exists("logo.jpg"):
@@ -480,7 +480,9 @@ with col_logo1:
     st.markdown("🛠️")
 with col_logo2:
   st.markdown(
-      "<div style='color: #003366; font-size: 28px; font-weight: 900; padding-top: 15px;'>ETE Sesc Bertioga — Módulo de Manutenção</div>",
+      "<div style='background-color: #003366; padding: 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 2px solid #001f3f;'>"
+      "<h2 style='color: white !important; margin: 0; font-size: 26px; font-weight: 900;'>ETE Sesc Bertioga — Módulo de Manutenção</h2>"
+      "</div>",
       unsafe_allow_html=True,
   )
 
