@@ -471,7 +471,7 @@ with st.sidebar.expander("📋 Gestão do Rascunho", expanded=True):
       unsafe_allow_html=True,
   )
 
-# --- CABEÇALHO COM LOGO E TÍTULO EM BLOCO AZUL ---
+# --- CABEÇALHO COM LOGO E TÍTULO EM BLOCO AZUL COM TEXTO BRANCO FORÇADO ---
 col_logo1, col_logo2 = st.columns([1, 5])
 with col_logo1:
   if os.path.exists("logo.jpg"):
@@ -481,7 +481,7 @@ with col_logo1:
 with col_logo2:
   st.markdown(
       "<div style='background-color: #003366; padding: 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 2px solid #001f3f;'>"
-      "<h2 style='color: white !important; margin: 0; font-size: 26px; font-weight: 900;'>ETE Sesc Bertioga — Módulo de Manutenção</h2>"
+      "<h2 style='color: #FFFFFF !important; margin: 0; font-size: 24px; font-weight: 900;'>ETE Sesc Bertioga — Módulo de Manutenção</h2>"
       "</div>",
       unsafe_allow_html=True,
   )
@@ -639,7 +639,7 @@ if st.button("➕ REGISTAR / SALVAR RASCUNHO DA MANUTENÇÃO"):
     erro_validacao = True
   elif status_manut == "Equipamento Fora de Operação":
     if not rastreabilidade_fora_op.get("motivo_anomalia", "").strip():
-      st.error("⚠️ Preencha o motivo/anomalia da parada do equipamento.")
+      st.error("⚠️️ Preencha o motivo/anomalia da parada do equipamento.")
       erro_validacao = True
   else:
     for atv, info in dados_atividades.items():
